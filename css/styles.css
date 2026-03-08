@@ -85,10 +85,10 @@ img { max-width: 100%; display: block; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 13px 28px;
+  padding: 10px 17px;
   border-radius: var(--radius-sm);
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: bold;
   cursor: pointer;
   transition: all var(--transition);
   text-decoration: none;
@@ -122,10 +122,10 @@ img { max-width: 100%; display: block; }
 
 .btn-gold {
   background: var(--gold);
-  color: #1a1a1a;
+  color: white;
 }
 .btn-gold:hover {
-  color: #1a1a1a;
+  color: beige;
   text-decoration: none;
   transform: translateY(-1px);
   box-shadow: var(--shadow);
@@ -162,9 +162,8 @@ img { max-width: 100%; display: block; }
 .nav-brand:hover { text-decoration: none; }
 
 .nav-brand .brand-icon {
-  width: 34px;
-  height: 34px;
-  background: var(--primary);
+  width: 24px;
+  height: 24px; 
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -445,6 +444,7 @@ section {
   display: flex;
   flex-direction: column;
   transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+  height: 560px;
 }
 
 .pricing-card:hover {

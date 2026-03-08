@@ -1,14 +1,44 @@
+// ── Component Loading ────────────────────────────────────
+function loadComponents() {
+  const basePath = window.location.pathname.includes('/pages/') ? '../' : './';
+  
+  const loadNav = fetch(basePath + 'components/nav.html')
+    .then(response => response.text())
+    .then(data => {
+      const ph = document.getElementById('nav-placeholder');
+      if (ph) {
+        ph.outerHTML = data.replace(/(href|src)="\//g, `$1="${basePath}`);
+        initNavScripts();
+      }
+    }).catch(err => console.error("Error loading nav:", err));
+
+  const loadFooter = fetch(basePath + 'components/footer.html')
+    .then(response => response.text())
+    .then(data => {
+      const ph = document.getElementById('footer-placeholder');
+      if (ph) {
+        ph.outerHTML = data.replace(/(href|src)="\//g, `$1="${basePath}`);
+        initFooterScripts();
+      }
+    }).catch(err => console.error("Error loading footer:", err));
+
+  return Promise.all([loadNav, loadFooter]);
+}
+
+document.addEventListener('DOMContentLoaded', loadComponents);
+
 // ── Footer year ──────────────────────────────────────────
-const footerYear = document.getElementById('footer-year');
-if (footerYear) {
-  footerYear.textContent = new Date().getFullYear();
+function initFooterScripts() {
+  const footerYear = document.getElementById('footer-year');
+  if (footerYear) {
+    footerYear.textContent = new Date().getFullYear();
+  }
 }
 
 // ── Mobile menu toggle ──────────────────────────────────
-const toggle = document.getElementById('nav-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
-
 function closeMobileMenu() {
+  const toggle = document.getElementById('nav-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
   if (mobileMenu && toggle) {
     mobileMenu.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
@@ -16,20 +46,43 @@ function closeMobileMenu() {
   }
 }
 
-if (toggle && mobileMenu) {
-  toggle.addEventListener('click', function () {
-    var isOpen = mobileMenu.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    toggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
-  });
+// Ensure the function is globally available for inline onclicks
+window.closeMobileMenu = closeMobileMenu;
 
-  // Close mobile menu on outside click
-  document.addEventListener('click', function (e) {
-    if (!toggle.contains(e.target) && !mobileMenu.contains(e.target)) {
-      closeMobileMenu();
-    }
-  });
+function initNavScripts() {
+  const toggle = document.getElementById('nav-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (toggle && mobileMenu) {
+    toggle.addEventListener('click', function () {
+      var isOpen = mobileMenu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      toggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+    });
+
+    // Close mobile menu on outside click
+    document.addEventListener('click', function (e) {
+      if (!toggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+        closeMobileMenu();
+      }
+    });
+  }
+
+  // ── Theme Toggle ──
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      let theme = document.documentElement.getAttribute('data-theme');
+      let targetTheme = theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', targetTheme);
+      localStorage.setItem('theme', targetTheme);
+    });
+  }
 }
+
+// Initialize theme early to prevent flashing
+const initTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+document.documentElement.setAttribute('data-theme', initTheme);
 
 // ── Scroll-triggered fade-in ─────────────────────────────
 const observer = new IntersectionObserver(function (entries) {
@@ -83,19 +136,3 @@ document.querySelectorAll('.faq-question').forEach(function (btn) {
   });
 });
 
-// â”€â”€ Theme Toggle â”€â”€
-const themeToggle = document.getElementById('theme-toggle');
-if (themeToggle) {
-  const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  document.documentElement.setAttribute('data-theme', currentTheme);
-  
-  themeToggle.addEventListener('click', () => {
-    let theme = document.documentElement.getAttribute('data-theme');
-    let targetTheme = theme === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', targetTheme);
-    localStorage.setItem('theme', targetTheme);
-  });
-} else {
-  const initTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  document.documentElement.setAttribute('data-theme', initTheme);
-}
