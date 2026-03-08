@@ -82,3 +82,20 @@ document.querySelectorAll('.faq-question').forEach(function (btn) {
     }
   });
 });
+
+// â”€â”€ Theme Toggle â”€â”€
+const themeToggle = document.getElementById('theme-toggle');
+if (themeToggle) {
+  const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', currentTheme);
+  
+  themeToggle.addEventListener('click', () => {
+    let theme = document.documentElement.getAttribute('data-theme');
+    let targetTheme = theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', targetTheme);
+    localStorage.setItem('theme', targetTheme);
+  });
+} else {
+  const initTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', initTheme);
+}
