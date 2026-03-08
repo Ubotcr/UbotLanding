@@ -46,7 +46,10 @@
   }
   </script>
 
-  <link rel="stylesheet" href="css/styles.css?v=3">
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  
+  <link rel="stylesheet" href="css/styles.css?v=4">
 </head>
 <body>
 
@@ -145,7 +148,7 @@
             Genera videos personalizados sobre cualquier tema de tu sesión de estudio. 
             Aprende a tu ritmo con contenido visual generado por IA.
           </p>
-          <span class="feature-badge" aria-label="Función premium">💎 Pro</span>
+          <span class="feature-badge" aria-label="Función premium">Pro</span>
         </article>
 
         <article class="feature-card fade-in" aria-label="Podcasts de estudio">
@@ -155,7 +158,7 @@
             Convierte cualquier explicación en un podcast que puedes escuchar en cualquier lugar. 
             Repasa temas importantes mientras te transportas.
           </p>
-          <span class="feature-badge" aria-label="Función premium">💎 Pro</span>
+          <span class="feature-badge" aria-label="Función premium">Pro</span>
         </article>
 
         <article class="feature-card fade-in" aria-label="Historial sincronizado">
@@ -208,6 +211,50 @@
     </div>
   </section>
 
+  <!-- ═══ GALERÍA DE CAPTURAS ═══════════════════════════════════ -->
+  <section id="gallery" aria-labelledby="gallery-heading">
+    <div class="container gallery-container">
+      <div class="section-header">
+        <span class="badge badge-primary">Galería</span>
+        <h2 id="gallery-heading">Así se ve Ubot en acción</h2>
+        <p>Desliza para ver la interfaz diseñada para un aprendizaje sin distracciones.</p>
+      </div>
+
+      <!-- Slider main container -->
+      <div class="swiper gallery-slider fade-in">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <img src="/img/promo/1.png" alt="Captura de promoción.">
+          </div>
+          <div class="swiper-slide">
+            <img src="/img/promo/2.png" alt="Captura de promoción.">
+          </div>
+          <div class="swiper-slide">
+            <img src="/img/promo/3.png" alt="Captura de promoción.">
+          </div>
+          <div class="swiper-slide">
+            <img src="/img/promo/4.png" alt="Captura de promoción.">
+          </div>
+          <div class="swiper-slide">
+            <img src="/img/promo/5.png" alt="Captura de promoción.">
+          </div>
+          <div class="swiper-slide">
+            <img src="/img/promo/6.png" alt="Captura de promoción.">
+          </div>
+        </div>
+
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ PRICING ═══════════════════════════════════════════════ -->
   <section id="pricing" aria-labelledby="pricing-heading">
     <div class="container">
@@ -223,7 +270,8 @@
         <div class="pricing-card fade-in" role="region" aria-label="Plan Gratuito">
           <p class="plan-name">Gratuito</p>
           <div class="plan-price">
-            <span class="amount">$0</span>
+            <span class="currency">$</span>
+            <span class="amount">0<small class="price-decimal">.00</small></span>
             <span class="period">&nbsp;/ mes</span>
           </div>
           <p class="plan-desc">Perfecto para comenzar tu preparación sin compromisos.</p>
@@ -388,7 +436,10 @@
   <div id="footer-placeholder"></div>
 
   <!-- ═══ JAVASCRIPT ════════════════════════════════════════════ -->
-  <script src="js/main.js?v=2"></script>
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
+  <script src="js/main.js?v=4"></script>
 
 </body>
 </html>

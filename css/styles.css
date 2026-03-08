@@ -424,6 +424,112 @@ section {
   color: var(--text-muted);
 }
 
+/* ─── Gallery (Swiper Carousel) ───────────────────────────── */
+#gallery { 
+  background: var(--bg-alt); 
+  overflow: hidden; 
+}
+
+.gallery-container {
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.gallery-slider {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.gallery-slider .swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 600px;
+  max-width: 80vw;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border);
+}
+
+.gallery-slider .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* Swiper custom colors matching theme */
+.swiper-pagination-bullet {
+  background: var(--text-muted);
+}
+.swiper-pagination-bullet-active {
+  background: var(--primary);
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--primary);
+}
+
+/* ─── Gallery Modal (Click to zoom) ──────────────────────── */
+.image-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 10, 15, 0.9);
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.image-modal.show {
+  display: flex;
+  opacity: 1;
+}
+
+.image-modal-content {
+  display: block;
+  max-width: 90%;
+  max-height: 90vh;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+  object-fit: contain;
+}
+
+.image-modal.show .image-modal-content {
+  transform: scale(1);
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: var(--text-light);
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  z-index: 10000;
+}
+
+.close-modal:hover {
+  color: var(--primary);
+}
+
+/* Cursor pointer indicating zoom on active slide */
+.swiper-slide-active img {
+  cursor: zoom-in;
+}
+
 /* ─── Pricing ────────────────────────────────────────────── */
 #pricing { background: var(--bg); }
 

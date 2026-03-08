@@ -25,7 +25,86 @@ function loadComponents() {
   return Promise.all([loadNav, loadFooter]);
 }
 
-document.addEventListener('DOMContentLoaded', loadComponents);
+document.addEventListener('DOMContentLoaded', () => {
+  loadComponents();
+  initSwiper();
+  initGalleryModal();
+});
+
+// ── Gallery Modal (Click to zoom) ────────────────────────
+function initGalleryModal() {
+  // Create modal elements
+  const modal = document.createElement('div');
+  modal.className = 'image-modal';
+  modal.innerHTML = `
+    <span class="close-modal">&times;</span>
+    <img class="image-modal-content">
+  `;
+  document.body.appendChild(modal);
+
+  const modalImg = modal.querySelector('.image-modal-content');
+  const closeBtn = modal.querySelector('.close-modal');
+
+  // Listen for clicks on the active slide's image
+  document.addEventListener('click', function(e) {
+    if (e.target.tagName === 'IMG' && e.target.closest('.swiper-slide-active')) {
+      modalImg.src = e.target.src;
+      modal.style.display = 'flex';
+      // Use small timeout to allow display:flex to apply before adding class for transition
+      setTimeout(() => modal.classList.add('show'), 10);
+    }
+  });
+
+  // Function to close modal
+  function closeModal() {
+    modal.classList.remove('show');
+    setTimeout(() => modal.style.display = 'none', 300); // 300ms matches CSS transition
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e) {
+    // Close if clicked outside the image
+    if (e.target !== modalImg) {
+      closeModal();
+    }
+  });
+}
+
+// ── Swiper Initialization ────────────────────────────────
+function initSwiper() {
+  if (typeof Swiper !== 'undefined' && document.querySelector('.gallery-slider')) {
+    new Swiper('.gallery-slider', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      loop: true,
+      slideToClickedSlide: true, // Permite hacer click en la foto anterior/siguiente para cambiar
+      observer: true,
+      observeParents: true,
+      watchSlidesProgress: true, // Añadido para corregir problemas de visibilidad de las siguientes fotos
+      coverflowEffect: {
+        rotate: 30,
+        stretch: 0,
+        depth: 150,
+        modifier: 1,
+        slideShadows: true,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      }
+    });
+  }
+}
 
 // ── Footer year ──────────────────────────────────────────
 function initFooterScripts() {
