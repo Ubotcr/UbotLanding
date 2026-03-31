@@ -2,7 +2,7 @@
 function loadComponents() {
   const basePath = window.location.pathname.includes('/pages/') ? '../' : './';
   
-  const loadNav = fetch(basePath + 'components/nav.html')
+  const loadNav = fetch(basePath + 'components/nav.html?v=1')
     .then(response => response.text())
     .then(data => {
       const ph = document.getElementById('nav-placeholder');
@@ -12,7 +12,7 @@ function loadComponents() {
       }
     }).catch(err => console.error("Error loading nav:", err));
 
-  const loadFooter = fetch(basePath + 'components/footer.html')
+  const loadFooter = fetch(basePath + 'components/footer.html?v=1')
     .then(response => response.text())
     .then(data => {
       const ph = document.getElementById('footer-placeholder');
