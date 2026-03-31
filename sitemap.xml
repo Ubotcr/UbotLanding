@@ -48,7 +48,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://chat.ubotcr.com/examenes/historial</loc>
+    <loc>https://chat.ubotcr.com/juegos/examenes/historial</loc>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
