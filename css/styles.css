@@ -148,6 +148,7 @@ img { max-width: 100%; display: block; }
   align-items: center;
   justify-content: space-between;
   height: 64px;
+  gap: 10px;
 }
 
 .nav-brand {
@@ -176,6 +177,8 @@ img { max-width: 100%; display: block; }
   align-items: center;
   gap: 8px;
   list-style: none;
+  flex: 1;
+  justify-content: center;
 }
 
 .nav-links a {

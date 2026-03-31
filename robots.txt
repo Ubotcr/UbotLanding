@@ -8,8 +8,6 @@ User-agent: Bingbot
 Allow: /
 
 # Bloquear bots de scraping y herramientas agresivas (comunes en extracciones de datos ilegítimos)
-# Nota: robots.txt no puede bloquear tráfico por país (como India). Para bloquear por IP/Región de India, 
-# se recomienda hacerlo a nivel de servidor usando un Firewall (Web Application Firewall como Cloudflare o .htaccess).
 User-agent: MJ12bot
 Disallow: /
 User-agent: AhrefsBot
@@ -29,4 +27,4 @@ Disallow: /
 User-agent: HTTrack
 Disallow: /
 
-Sitemap: https://chat.ubotcr.com/sitemap.xml
+Sitemap: https://ubotcr.com/sitemap.xml
