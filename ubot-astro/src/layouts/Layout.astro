@@ -7,39 +7,52 @@ import '../css/styles.css'; // Importa el CSS global
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Primary SEO -->
-  <title>Ubot - IA para Exámenes de Admisión UCR, UNA y TEC (Costa Rica)</title>
-  <meta name="description" content="Ubot es tu asistente de inteligencia artificial exclusivo para prepararte para los exámenes de admisión de las universidades estatales de Costa Rica." />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="canonical" href="https://ubotcr.com/" />
-  
-  <meta name="generator" content={Astro.generator} />
+	<!-- Primary SEO -->
+	<title>Ubot - IA para Exámenes de Admisión UCR, UNA y TEC (Costa Rica)</title>
+	<meta name="description" content="Ubot es tu asistente de inteligencia artificial exclusivo para prepararte para los exámenes de admisión de las universidades estatales de Costa Rica." />
+	
+	<!-- 1. For modern browsers: SVG is sharp at any resolution -->
+	<link rel="icon" type="image/svg+xml" href="/icon.svg">
 
-  <!-- Structured Data (Organization) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Ubot",
-    "url": "https://ubotcr.com",
-    "description": "Asistente de inteligencia artificial diseñado exclusivamente para la prep...",
-    "applicationCategory": "EducationalApplication",
-    "operatingSystem": "Web",
-    "potentialAction": [
-      {
-        "@type": "Action",
-        "name": "Chat con IA",
-        "target": "https://chat.ubotcr.com"
-      }
-    ]
-  }
-  </script>
+	<!-- 2. For legacy support and browser tabs (contains 16x16 and 32x32) -->
+	<!-- 'sizes="32x32"' prevents Chrome from choosing this over the SVG -->
+	<link rel="icon" href="/favicon.ico" sizes="32x32">
 
-  <!-- Swiper CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+	<!-- 3. For Apple devices (iPhone/iPad home screen) -->
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+	<!-- 4. For Android and PWA (points to high-res 192x192 and 512x512 icons) -->
+	<link rel="manifest" href="/site.webmanifest">
+	
+	<link rel="canonical" href="https://ubotcr.com/" />
+	
+	<meta name="generator" content={Astro.generator} />
+
+	<!-- Structured Data (Organization) -->
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "SoftwareApplication",
+		"name": "Ubot",
+		"url": "https://ubotcr.com",
+		"description": "Asistente de inteligencia artificial diseñado exclusivamente para la prep...",
+		"applicationCategory": "EducationalApplication",
+		"operatingSystem": "Web",
+		"potentialAction": [
+		{
+			"@type": "Action",
+			"name": "Chat con IA",
+			"target": "https://chat.ubotcr.com"
+		}
+		]
+	}
+	</script>
+
+	<!-- Swiper CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <body>
 
