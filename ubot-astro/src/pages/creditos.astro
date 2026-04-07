@@ -1,0 +1,179 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <!-- ═══ PAGE HERO ════════════════════════════════════════════ -->
+  <section class="page-hero" aria-labelledby="page-heading">
+    <div class="container">
+      <h1 id="page-heading" class="fade-in">Créditos y Tecnologías</h1>
+      <p class="page-subtitle fade-in">Las tecnologías que hacen posible Ubot</p>
+      <ul class="breadcrumb fade-in" aria-label="Navegación de migas">
+        <li><a href="/">Inicio</a></li>
+        <li><span class="current">Créditos</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══ TEAM ═══════════════════════════════════════════════ -->
+  <section id="team" class="team-section py-5" aria-labelledby="team-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-primary">Equipo</span>
+        <h2 id="team-heading">Equipo de Desarrollo</h2>
+        <p>Reconocimiento a las personas detrás de Ubot.</p>
+      </div>
+
+      <div class="credits-grid">
+
+        <article class="credit-card fade-in" aria-label="Eddie Bermúdez">
+          <div class="credit-icon" aria-hidden="true" style="background-color: var(--primary); color: white; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-weight: bold; font-size: 1.5rem;">E</div>
+          <h3>Eddie Bermúdez</h3>
+          <p class="text-primary text-sm mb-2" style="color: var(--primary); font-size: 0.9rem;">Desarrollador Frontend | Estudiante UNA</p>
+          <p>Arquitecto de la experiencia de usuario. Construyó la interfaz de Ubot utilizando Blazor WebAssembly, MudBlazor, .NET y C#.</p>
+        </article>
+
+        <article class="credit-card fade-in" aria-label="Efraín Retana">
+          <div class="credit-icon" aria-hidden="true" style="background-color: var(--secondary, #333333); color: white; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-weight: bold; font-size: 1.5rem;">E</div>
+          <h3>Efraín Retana</h3>
+          <p class="text-secondary text-sm mb-2" style="color: var(--secondary); font-size: 0.9rem;">Desarrollador Backend | Estudiante UNA</p>
+          <p>Desarrolló toda la infraestructura backend utilizando Python y FastAPI, integrando las capacidades de OpenAI para ofrecer respuestas precisas a cada estudiante.</p>
+        </article>
+
+        <article class="credit-card fade-in" aria-label="Gabriel Quirós">
+          <div class="credit-icon" aria-hidden="true" style="background-color: var(--success, #28a745); color: white; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-weight: bold; font-size: 1.5rem;">G</div>
+          <h3>Gabriel Quirós</h3>
+          <p class="text-success text-sm mb-2" style="color: var(--success, #28a745); font-size: 0.9rem;">Desarrollador Backend & Contenido Multimedia | Estudiante UNA</p>
+          <p>Implementó el sistema de pagos a través de PayPal y diseñó los prompts especializados para la generación de videos y podcasts educativos.</p>
+        </article>
+
+        <article class="credit-card fade-in" aria-label="Allan Castillo">
+          <div class="credit-icon" aria-hidden="true" style="background-color: var(--warning, #ffc107); color: white; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-weight: bold; font-size: 1.5rem;">A</div>
+          <h3>Allan Castillo</h3>
+          <p class="text-warning text-sm mb-2" style="color: var(--warning, #ffc107); font-size: 0.9rem;">Director Administrativo | Estudiante ULEAD</p>
+          <p>Líder estratégico del proyecto. Gestiona la administración general de Ubot y proporciona asesoramiento financiero para la sostenibilidad del proyecto.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TECHNOLOGIES ═════════════════════════════════════════ -->
+  <section id="technologies" aria-labelledby="technologies-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-primary">Tecnologías y Frameworks</span>
+        <h2 id="technologies-heading">Construido con lo mejor</h2>
+        <p>Estas son las tecnologías y servicios que impulsan la plataforma de Ubot.</p>
+      </div>
+
+      <div class="credits-grid">
+
+        <article class="credit-card fade-in" aria-label="Blazor WebAssembly">
+          <div class="credit-icon" aria-hidden="true" style="color: var(--primary);">🌐</div>
+          <h3>Blazor WebAssembly</h3>
+          <p>Framework frontend de .NET para aplicaciones web interactivas.</p>
+        </article>
+
+        <article class="credit-card fade-in" aria-label=".NET 9">
+          <div class="credit-icon" aria-hidden="true" style="color: var(--info, #17a2b8);">💻</div>
+          <h3>.NET 9</h3>
+          <p>Plataforma de desarrollo multiplataforma de Microsoft.</p>
+        </article>
+
+        <article class="credit-card fade-in" aria-label="MudBlazor">
+          <div class="credit-icon" aria-hidden="true" style="color: var(--secondary);">🎨</div>
+          <h3>MudBlazor</h3>
+          <p>Librería de componentes Material Design para Blazor.</p>
+        </article>
+
+        <article class="credit-card fade-in" aria-label="Markdig">
+          <div class="credit-icon" aria-hidden="true" style="color: var(--success, #28a745);">📝</div>
+          <h3>Markdig</h3>
+          <p>Procesador de Markdown de alto rendimiento para .NET.</p>
+        </article>
+
+        <article class="credit-card fade-in" aria-label="Python">
+          <div class="credit-icon" aria-hidden="true" style="color: var(--warning, #ffc107);">🐍</div>
+          <h3>Python</h3>
+          <p>Lenguaje de programación utilizado en el backend.</p>
+        </article>
+
+        <article class="credit-card fade-in" aria-label="FastAPI">
+          <div class="credit-icon" aria-hidden="true" style="color: var(--danger, #dc3545);">⚡</div>
+          <h3>FastAPI</h3>
+          <p>Framework web moderno y rápido para APIs en Python.</p>
+        </article>
+
+        <article class="credit-card fade-in" aria-label="OpenAI API">
+          <div class="credit-icon" aria-hidden="true" style="color: var(--primary);">🤖</div>
+          <h3>OpenAI API</h3>
+          <p>API de inteligencia artificial para generación de respuestas.</p>
+        </article>
+
+        <article class="credit-card fade-in" aria-label="PayPal SDK">
+          <div class="credit-icon" aria-hidden="true" style="color: var(--info, #17a2b8);">💳</div>
+          <h3>PayPal SDK</h3>
+          <p>Plataforma de pagos utilizada para suscripciones.</p>
+        </article>
+
+        <article class="credit-card fade-in" aria-label="Docker">
+          <div class="credit-icon" aria-hidden="true" style="color: var(--secondary);">🐳</div>
+          <h3>Docker</h3>
+          <p>Plataforma de contenedores para despliegue de la aplicación.</p>
+        </article>
+
+        <article class="credit-card fade-in" aria-label="nginx">
+          <div class="credit-icon" aria-hidden="true" style="color: var(--success, #28a745);">🔄</div>
+          <h3>nginx</h3>
+          <p>Servidor web de alto rendimiento utilizado como proxy inverso.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ LICENSES ══════════════════════════════════════════════ -->
+  <section class="acknowledgments-section" aria-labelledby="licenses-heading">
+    <div class="container">
+      <div class="acknowledgments-content fade-in">
+        <span class="badge badge-primary">Legal</span>
+        <h2 id="licenses-heading">Licencias de Código Abierto</h2>
+        <p>
+          Ubot hace uso de software de código abierto. A continuación se listan las licencias de las principales dependencias utilizadas en este proyecto:
+        </p>
+        <ul style="list-style: none; padding: 0; text-align: left; margin-top: 1.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+          <li><b>Blazor WebAssembly</b> — MIT License</li>
+          <li><b>.NET 9</b> — MIT License</li>
+          <li><b>MudBlazor</b> — MIT License</li>
+          <li><b>Markdig</b> — BSD 2-Clause License</li>
+          <li><b>Python</b> — PSF License</li>
+          <li><b>FastAPI</b> — MIT License</li>
+          <li><b>OpenAI API</b> — Términos de Servicio de OpenAI</li>
+          <li><b>PayPal SDK</b> — Términos de Servicio de PayPal</li>
+          <li><b>Docker</b> — Apache License 2.0</li>
+          <li><b>nginx</b> — BSD 2-Clause License</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ACKNOWLEDGMENTS ══════════════════════════════════════ -->
+  <section class="acknowledgments-section" aria-labelledby="ack-heading">
+    <div class="container">
+      <div class="acknowledgments-content fade-in">
+        <span class="badge badge-primary">Gracias</span>
+        <h2 id="ack-heading">Agradecimientos</h2>
+        <p>
+          Queremos agradecer a la comunidad de código abierto que hace posible proyectos como Ubot. Sin las herramientas, bibliotecas y frameworks que generosamente comparten desarrolladores de todo el mundo, nuestra plataforma no existiría.
+        </p>
+        <p>
+          Un agradecimiento especial a los estudiantes costarricenses que han confiado en Ubot como su compañero de estudio. Su retroalimentación, entusiasmo y dedicación nos inspiran a seguir mejorando cada día.
+        </p>
+        <p>
+          También agradecemos a las universidades públicas de Costa Rica — la UCR, el TEC y la UNA — por su compromiso con la educación superior de calidad, que motiva nuestra misión de hacer el acceso más equitativo para todos.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

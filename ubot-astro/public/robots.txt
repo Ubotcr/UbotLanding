@@ -1,0 +1,30 @@
+User-agent: *
+Allow: /
+
+# Permitir explícitamente a Googlebot y otros motores de búsqueda principales
+User-agent: Googlebot
+Allow: /
+User-agent: Bingbot
+Allow: /
+
+# Bloquear bots de scraping y herramientas agresivas (comunes en extracciones de datos ilegítimos)
+User-agent: MJ12bot
+Disallow: /
+User-agent: AhrefsBot
+Disallow: /
+User-agent: SemrushBot
+Disallow: /
+User-agent: DotBot
+Disallow: /
+User-agent: PetalBot
+Disallow: /
+User-agent: BLEXBot
+Disallow: /
+User-agent: Baiduspider
+Disallow: /
+User-agent: YandexBot
+Disallow: /
+User-agent: HTTrack
+Disallow: /
+
+Sitemap: https://ubotcr.com/sitemap.xml

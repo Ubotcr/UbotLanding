@@ -1,0 +1,403 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <!-- ═══ HERO ═════════════════════════════════════════════════ -->
+  <section id="hero" aria-labelledby="hero-heading">
+    <div class="container">
+      <div class="hero-badge fade-in">
+        <span class="badge badge-primary">Ahora disponible en beta</span>
+      </div>
+
+      <div class="logos-container">
+        <div class="college-logo fade-in">
+          <img src="/img/Logos/UCR.png" alt="Logo UCR" style="filter: drop-shadow(0 0 10px #8885);" />
+        </div>
+        <div class="college-logo fade-in">
+          <img src="/img/Logos/UNA.svg" alt="Logo UNA" style="filter: drop-shadow(0 0 10px #f225);" />
+        </div>
+        <div class="college-logo fade-in">
+          <img src="/img/Logos/TEC.svg" alt="Logo TEC" style="filter: drop-shadow(0 0 10px #33f6);" />
+        </div>
+      </div>
+
+      <h1 id="hero-heading" class="fade-in">
+        Prepárate para la U con<br/>
+        <span class="highlight">inteligencia artificial</span>
+      </h1>
+
+      <p class="hero-sub fade-in">
+        Ubot es tu asistente de IA disponible 24/7 para resolver dudas, practicar exámenes y mejorar tu razonamiento —
+        gratis para todos.
+      </p>
+
+      <div class="hero-actions fade-in">
+        <a href="https://chat.ubotcr.com" class="btn btn-primary btn-lg" rel="noopener noreferrer">
+          Comenzar gratis
+        </a>
+        <a href="#pricing" class="btn btn-outline btn-lg">
+          Ver planes
+        </a>
+      </div>
+
+      <div class="hero-stats fade-in" role="list" aria-label="Estadísticas de Ubot">
+        <div class="hero-stat-item" role="listitem">
+          <span class="hero-stat-num">24/7</span>
+          <span class="hero-stat-label">Disponibilidad</span>
+        </div>
+        <div class="hero-stat-item" role="listitem">
+          <span class="hero-stat-num">100%</span>
+          <span class="hero-stat-label">Gratis para comenzar</span>
+        </div>
+        <div class="hero-stat-item" role="listitem">
+          <span class="hero-stat-num">3+</span>
+          <span class="hero-stat-label">Modalidades de estudio</span>
+        </div>
+        <div class="hero-stat-item" role="listitem">
+          <span class="hero-stat-num">🏆</span>
+          <span class="hero-stat-label">Rankings globales</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURES ═════════════════════════════════════════════ -->
+  <section id="features" aria-labelledby="features-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-primary">Funcionalidades</span>
+        <h2 id="features-heading">Todo lo que necesitas para triunfar</h2>
+        <p>Herramientas diseñadas específicamente para la preparación de exámenes de admisión universitaria.</p>
+      </div>
+
+      <div class="features-grid">
+
+        <article class="feature-card fade-in" aria-label="Chat con IA">
+          <div class="feature-icon-wrap icon-blue" aria-hidden="true">💬</div>
+          <h3>Chat con IA</h3>
+          <p>
+            Pregunta lo que quieras sobre razonamiento verbal, matemática, o cualquier tema del examen. 
+            Obtienes explicaciones claras, paso a paso, con soporte para notación matemática LaTeX.
+          </p>
+        </article>
+
+        <article class="feature-card fade-in" aria-label="Exámenes diarios">
+          <div class="feature-icon-wrap icon-green" aria-hidden="true">📝</div>
+          <h3>Exámenes Diarios y Semanales</h3>
+          <p>
+            Practica con exámenes cronometrados en el formato real de la prueba de admisión. 
+            Recibe retroalimentación detallada y consulta tu historial de resultados.
+          </p>
+        </article>
+
+        <article class="feature-card fade-in" aria-label="Rankings y competencia">
+          <div class="feature-icon-wrap icon-gold" aria-hidden="true">🏆</div>
+          <h3>Rankings y Competencia</h3>
+          <p>
+            Mide tu avance contra estudiantes de todo el país en el ranking global. 
+            Mantén tu racha diaria y sube de nivel con el sistema de puntos Elo.
+          </p>
+        </article>
+
+        <article class="feature-card fade-in" aria-label="Videos explicativos">
+          <div class="feature-icon-wrap icon-purple" aria-hidden="true">🎥</div>
+          <h3>Videos Explicativos</h3>
+          <p>
+            Genera videos personalizados sobre cualquier tema de tu sesión de estudio. 
+            Aprende a tu ritmo con contenido visual generado por IA.
+          </p>
+          <span class="feature-badge" aria-label="Función premium">Premium</span>
+        </article>
+
+        <article class="feature-card fade-in" aria-label="Podcasts de estudio">
+          <div class="feature-icon-wrap icon-red" aria-hidden="true">🎧</div>
+          <h3>Podcasts de Estudio</h3>
+          <p>
+            Convierte cualquier explicación en un podcast que puedes escuchar en cualquier lugar. 
+            Repasa temas importantes mientras te transportas.
+          </p>
+          <span class="feature-badge" aria-label="Función premium">Premium</span>
+        </article>
+
+        <article class="feature-card fade-in" aria-label="Historial sincronizado">
+          <div class="feature-icon-wrap icon-teal" aria-hidden="true">📚</div>
+          <h3>Historial Sincronizado</h3>
+          <p>
+            Todos tus chats y sesiones de estudio se sincronizan automáticamente. 
+            Continúa donde lo dejaste desde cualquier dispositivo.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW IT WORKS ═════════════════════════════════════════ -->
+  <section id="how-it-works" aria-labelledby="how-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-primary">Proceso</span>
+        <h2 id="how-heading">¿Cómo funciona?</h2>
+        <p>Empieza a prepararte en menos de un minuto, sin tarjeta de crédito.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card fade-in">
+          <div class="step-number" aria-hidden="true">1</div>
+          <h3>Crea tu cuenta gratis</h3>
+          <p>Ingresa con tu cuenta de Google en segundos. No necesitas pagar ni ingresar datos de pago.</p>
+        </div>
+
+        <div class="step-card fade-in">
+          <div class="step-number" aria-hidden="true">2</div>
+          <h3>Haz tu primera pregunta</h3>
+          <p>Escribe tu duda sobre matemática, razonamiento verbal o cualquier tema del examen y obtén una respuesta al instante.</p>
+        </div>
+
+        <div class="step-card fade-in">
+          <div class="step-number" aria-hidden="true">3</div>
+          <h3>Practica con exámenes</h3>
+          <p>Resuelve los exámenes diarios y semanales para poner a prueba tus conocimientos y ver cuánto has avanzado.</p>
+        </div>
+
+        <div class="step-card fade-in">
+          <div class="step-number" aria-hidden="true">4</div>
+          <h3>Mejora tu puntaje</h3>
+          <p>Analiza tus resultados, identifica áreas de mejora y sube en el ranking global camino a la universidad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ GALERÍA DE CAPTURAS ═══════════════════════════════════ -->
+  <section id="gallery" aria-labelledby="gallery-heading">
+    <div class="container gallery-container">
+      <div class="section-header">
+        <span class="badge badge-primary">Galería</span>
+        <h2 id="gallery-heading">Así se ve Ubot en acción</h2>
+        <p>Desliza para ver la interfaz diseñada para un aprendizaje sin distracciones.</p>
+      </div>
+
+      <!-- Slider main container -->
+      <div class="swiper gallery-slider fade-in">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <img src="/img/promo/1.png" alt="Captura de promoción.">
+          </div>
+          <div class="swiper-slide">
+            <img src="/img/promo/2.png" alt="Captura de promoción.">
+          </div>
+          <div class="swiper-slide">
+            <img src="/img/promo/3.png" alt="Captura de promoción.">
+          </div>
+          <div class="swiper-slide">
+            <img src="/img/promo/4.png" alt="Captura de promoción.">
+          </div>
+          <div class="swiper-slide">
+            <img src="/img/promo/5.png" alt="Captura de promoción.">
+          </div>
+          <div class="swiper-slide">
+            <img src="/img/promo/6.png" alt="Captura de promoción.">
+          </div>
+        </div>
+
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PRICING ═══════════════════════════════════════════════ -->
+  <section id="pricing" aria-labelledby="pricing-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-primary">Precios</span>
+        <h2 id="pricing-heading">Elige tu plan</h2>
+        <p>Acceso gratuito para todos. Funciones avanzadas con Ubot Premium.</p>
+      </div>
+
+      <div class="pricing-grid">
+
+        <!-- Free -->
+        <div class="pricing-card fade-in" role="region" aria-label="Plan Gratuito">
+          <p class="plan-name">Gratuito</p>
+          <div class="plan-price">
+            <span class="currency">$</span>
+            <span class="amount">0<small class="price-decimal">.00</small></span>
+            <span class="period">&nbsp;/ mes</span>
+          </div>
+
+          <ul class="plan-features" aria-label="Características del plan gratuito">
+            <li>
+              <span class="check" aria-hidden="true">✓</span>
+              Chat con IA (consultas diarias limitadas)
+            </li>
+            <li>
+              <span class="check" aria-hidden="true">✓</span>
+              Exámenes diarios
+            </li>
+            <li>
+              <span class="check" aria-hidden="true">✓</span>
+              Ranking global y diario
+            </li>
+            <li>
+              <span class="check" aria-hidden="true">✓</span>
+              Historial de chats sincronizado
+            </li>
+            <li>
+              <span class="check" aria-hidden="true">✓</span>
+              Historial de exámenes
+            </li>
+            <li class="muted">
+              <span class="check" aria-hidden="true">-</span>
+              Generación de videos
+            </li>
+            <li class="muted">
+              <span class="check" aria-hidden="true">-</span>
+              Generación de podcasts
+            </li>
+            <li class="muted">
+              <span class="check" aria-hidden="true">-</span>
+              Flipcards de estudio inteligente
+            </li>
+            <li class="muted">
+              <span class="check" aria-hidden="true">-</span>
+              Flipmatch para prácticar
+            </li>
+          </ul>
+
+          <a href="https://chat.ubotcr.com" class="btn btn-outline btn-centered" rel="noopener noreferrer">
+            Comenzar gratis
+          </a>
+        </div>
+
+        <!-- Premium -->
+        <div class="pricing-card featured fade-in" role="region" aria-label="Plan Ubot Premium">
+          <span class="plan-popular-tag" aria-label="Más popular">Popular</span>
+
+          <p class="plan-name plan-name-gold">Ubot Premium</p>
+          <div class="plan-price">
+            <span class="currency">$</span>
+            <span class="amount">5<small class="price-decimal">.00</small></span>
+            <span class="period">&nbsp;/ mes</span>
+          </div>
+
+          <ul class="plan-features" aria-label="Características del plan Premium">
+            <li>
+              <span class="check" aria-hidden="true">✓</span>
+              Todo lo del plan gratuito
+            </li>
+            <li>
+              <span class="check" aria-hidden="true">✓</span>
+              Exámenes ilimitados y semanales exclusivos
+            </li>
+            <li>
+              <span class="check" aria-hidden="true">✓</span>
+              Consultas diarias ampliadas
+            </li>
+            <li>
+              <span class="check" aria-hidden="true">✓</span>
+              Generación de videos explicativos
+            </li>
+            <li>
+              <span class="check" aria-hidden="true">✓</span>
+              Generación de podcasts de estudio
+            </li>
+            <li>
+              <span class="check" aria-hidden="true">✓</span>
+              Prioridad en respuestas de IA
+            </li>
+            <li>
+              <span class="check" aria-hidden="true">✓</span>
+              Flipmatch sin limites
+            </li>
+          </ul>
+
+          <a href="https://chat.ubotcr.com" class="btn btn-gold btn-centered" rel="noopener noreferrer">
+            Obtener Premium
+          </a>
+        </div>
+
+      </div>
+
+      <p class="text-center text-muted pricing-disclaimer">
+        Los precios exactos pueden variar. Cancela en cualquier momento sin penalización. Pago procesado de forma segura por PayPal.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ═════════════════════════════════════════════════ -->
+  <section id="about" aria-labelledby="about-heading">
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="about-content fade-in">
+          <span class="badge badge-primary">Nuestra misión</span>
+          <h2 id="about-heading">Educación superior accesible para todos</h2>
+          <p>
+            Nacimos para eliminar las barreras económicas y geográficas que impiden a estudiantes costarricenses 
+            ingresar a universidades públicas como la UCR, el TEC y la UNA.
+          </p>
+          <p>
+            Creemos que la calidad del acceso a la educación no debería depender de la capacidad económica. 
+            Por eso Ubot es gratuito en su esencia — un compañero de estudio disponible sin importar dónde estés 
+            o a qué hora sea.
+          </p>
+          <a href="/equipo" class="btn btn-outline">
+            Conocer más sobre nosotros
+          </a>
+        </div>
+
+        <div class="mission-cards fade-in">
+          <div class="mission-card">
+            <span class="mission-card-icon" aria-hidden="true">🎯</span>
+            <div>
+              <h4>Nuestra Misión</h4>
+              <p>Hacer más accesible el ingreso a la educación superior pública con herramientas de inteligencia artificial.</p>
+            </div>
+          </div>
+
+          <div class="mission-card">
+            <span class="mission-card-icon" aria-hidden="true">💡</span>
+            <div>
+              <h4>El Problema</h4>
+              <p>Muchos estudiantes no pueden pagar cursos preparatorios costosos. Los exámenes de admisión se vuelven una barrera infranqueable.</p>
+            </div>
+          </div>
+
+          <div class="mission-card">
+            <span class="mission-card-icon" aria-hidden="true">🚀</span>
+            <div>
+              <h4>Nuestra Solución</h4>
+              <p>Un asistente de IA 24/7, con exámenes, rankings y aprendizaje multimodal. Completamente gratis para comenzar.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FINAL CTA ═════════════════════════════════════════════ -->
+  <section id="cta" aria-labelledby="cta-heading">
+    <div class="container">
+      <h2 id="cta-heading">¿Listo para entrar a la U?</h2>
+      <p>Únete a Ubot hoy y empieza a prepararte con el poder de la inteligencia artificial. Es gratis.</p>
+      <div class="cta-actions">
+        <a href="https://chat.ubotcr.com" class="btn btn-primary btn-lg" rel="noopener noreferrer">
+          Comenzar gratis ahora
+        </a>
+        <a href="mailto:contacto@ubotcr.com" class="btn btn-outline btn-lg btn-light-outline">
+          Contactarnos
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

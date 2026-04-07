@@ -1,0 +1,180 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <!-- ═══ PAGE HERO ════════════════════════════════════════════ -->
+  <section class="page-hero" aria-labelledby="page-heading">
+    <div class="container">
+      <h1 id="page-heading" class="fade-in">Planes y Suscripciones</h1>
+      <p class="page-subtitle fade-in">Encuentra el plan perfecto para tu preparación</p>
+      <ul class="breadcrumb fade-in" aria-label="Navegación de migas">
+        <li><a href="/">Inicio</a></li>
+        <li><span class="current">Suscripciones</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══ COMPARISON TABLE ═════════════════════════════════════ -->
+  <section id="subscriptions" aria-labelledby="subscriptions-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-primary">Comparación</span>
+        <h2 id="subscriptions-heading">Gratuito vs. Premium</h2>
+        <p>Compara todas las funcionalidades de cada plan para elegir el que mejor se adapte a tus necesidades.</p>
+      </div>
+
+      <div class="comparison-table-wrap fade-in">
+        <table class="comparison-table" aria-label="Comparación de planes">
+          <thead>
+            <tr>
+              <th>Funcionalidad</th>
+              <th class="plan-col">Gratuito</th>
+              <th class="plan-col">Premium</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Chat con IA</td>
+              <td><span class="check-limited">Limitado</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Consultas diarias</td>
+              <td><span class="check-limited">Limitadas</span></td>
+              <td><span class="check-yes">Ampliadas</span></td>
+            </tr>
+            <tr>
+              <td>Exámenes diarios</td>
+              <td><span class="check-yes">✓</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Exámenes semanales</td>
+              <td><span class="check-yes">✓</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Ranking global y diario</td>
+              <td><span class="check-yes">✓</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Historial de chats</td>
+              <td><span class="check-yes">✓</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Historial de exámenes</td>
+              <td><span class="check-yes">✓</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Generación de videos explicativos</td>
+              <td><span class="check-no">-</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Generación de podcasts de estudio</td>
+              <td><span class="check-no">-</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Prioridad en respuestas de IA</td>
+              <td><span class="check-no">-</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Soporte prioritario</td>
+              <td><span class="check-no">-</span></td>
+              <td><span class="check-yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Precio</td>
+              <td><strong>$0 / mes</strong></td>
+              <td><strong>$5.00 / mes</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ ══════════════════════════════════════════════════ -->
+  <section class="faq-section" aria-labelledby="faq-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-primary">FAQ</span>
+        <h2 id="faq-heading">Preguntas Frecuentes</h2>
+        <p>Resolvemos tus dudas sobre nuestros planes y suscripciones.</p>
+      </div>
+
+      <div class="faq-list">
+
+        <div class="faq-item fade-in">
+          <button class="faq-question" aria-expanded="false">
+            ¿Puedo cambiar de plan en cualquier momento?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Sí, puedes actualizar o cancelar tu plan en cualquier momento desde la configuración de tu cuenta. Los cambios se aplican de forma inmediata y, si actualizas a Premium, tendrás acceso a todas las funciones premium al instante.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <button class="faq-question" aria-expanded="false">
+            ¿Cómo se procesan los pagos?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Los pagos se procesan de forma segura a través de PayPal. No almacenamos tu información de pago en nuestros servidores. PayPal maneja toda la transacción de forma encriptada y segura.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <button class="faq-question" aria-expanded="false">
+            ¿Hay descuentos para estudiantes?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Ubot ya es gratuito en su plan base, lo que incluye acceso al chat con IA, exámenes diarios y semanales, rankings y más. El plan Premium está diseñado para ser accesible a todos los estudiantes con un precio justo.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <button class="faq-question" aria-expanded="false">
+            ¿Qué pasa si cancelo mi suscripción Premium?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Mantienes acceso hasta el final del periodo de facturación actual. Después, tu cuenta regresará automáticamente al plan gratuito y conservarás todo tu historial y progreso.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ══════════════════════════════════════════════════ -->
+  <section id="cta" aria-labelledby="cta-heading">
+    <div class="container">
+      <h2 id="cta-heading">¿Listo para comenzar?</h2>
+      <p>Únete a Ubot hoy y empieza a prepararte con inteligencia artificial. Es gratis.</p>
+      <div class="cta-actions">
+        <a href="https://chat.ubotcr.com" class="btn btn-primary btn-lg" rel="noopener noreferrer">
+          Comenzar gratis ahora
+        </a>
+        <a href="mailto:contacto@ubotcr.com" class="btn btn-outline btn-lg btn-light-outline">
+          Contactarnos
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

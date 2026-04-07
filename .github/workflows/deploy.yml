@@ -1,0 +1,38 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Dispara este flujo cada vez que subas cambios a la rama "main" (o cámbiala a "master" si usas otra)
+  push:
+    branches: [ main ]
+  # Te permite correr esto a mano desde la página web de GitHub
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout el repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar NodeJS, construir y preparar el sitio
+        uses: withastro/action@v3
+        with:
+          # IMPORTANTE: Aquí le indicamos que nuestro código está en la carpeta ubot-astro
+          path: ./ubot-astro 
+          node-version: 20
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Desplegar a GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
