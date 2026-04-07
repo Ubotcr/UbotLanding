@@ -24,7 +24,7 @@ jobs:
         with:
           # IMPORTANTE: Aquí le indicamos que nuestro código está en la carpeta ubot-astro
           path: ./ubot-astro 
-          node-version: 20
+          node-version: 22
 
   deploy:
     needs: build
