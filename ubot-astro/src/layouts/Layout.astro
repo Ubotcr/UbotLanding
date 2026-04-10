@@ -38,14 +38,38 @@ import '../css/styles.css'; // Importa el CSS global
 		"@type": "SoftwareApplication",
 		"name": "Ubot",
 		"url": "https://ubotcr.com",
-		"description": "Asistente de inteligencia artificial diseñado exclusivamente para la prep...",
+		"description": "Asistente de inteligencia artificial diseñado exclusivamente para la preparación de exámenes de admisión a universidades estatales de Costa Rica (Universidad de Costa Rica, Universidad Nacional, Tecnológico de Costa Rica).",
 		"applicationCategory": "EducationalApplication",
+		"offers": [
+		{
+			"@type": "Offer",
+			"price": "0",
+			"priceCurrency": "USD",
+			"name": "Plan Gratuito"
+		},
+		{
+			"@type": "Offer",
+			"price": "5",
+			"priceCurrency": "USD",
+			"name": "Plan Premium"
+		}
+		],
 		"operatingSystem": "Web",
 		"potentialAction": [
 		{
 			"@type": "Action",
 			"name": "Chat con IA",
 			"target": "https://chat.ubotcr.com"
+		},
+		{
+			"@type": "Action",
+			"name": "Juegos Educativos",
+			"target": "https://chat.ubotcr.com/juegos/lobby"
+		},
+		{
+			"@type": "Action",
+			"name": "Nuestro equipo",
+			"target": "https://ubotcr.com/creditos"
 		}
 		]
 	}
