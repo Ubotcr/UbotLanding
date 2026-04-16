@@ -2,7 +2,7 @@
   <div class="container nav-inner">
     <a href="/" class="nav-brand" aria-label="Ubot - inicio">
       <span class="brand-icon" aria-hidden="true">
-        <img src="/img/school.png" alt="Ubot Logo"/>
+        <img src="/img/school.png" alt="Ubot Logo" width="24" height="24" loading="eager" decoding="async"/>
       </span>
       Ubot
     </a>
@@ -18,7 +18,7 @@
       </a>
     </div>
 
-    <button id="theme-toggle" class="btn btn-outline" aria-label="Toggle Theme" style="padding: 6px 12px; margin-right: 12px;">🌙/☀️</button>
+    <button id="theme-toggle" class="btn btn-outline theme-toggle" aria-label="Cambiar entre tema claro y oscuro">🌙</button>
     <button id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
     </button>
@@ -27,11 +27,11 @@
 
 <!-- Mobile menu -->
 <nav id="mobile-menu" aria-label="Menú móvil" role="navigation">
-  <a href="/#features"     onclick="closeMobileMenu()">Funciones</a>
-  <a href="/#how-it-works" onclick="closeMobileMenu()">¿Cómo funciona?</a>
-  <a href="/#pricing"      onclick="closeMobileMenu()">Precios</a>
-  <a href="/suscripciones" onclick="closeMobileMenu()">Suscripciones</a>
-  <a href="/#about"        onclick="closeMobileMenu()">Nosotros</a>
-  <a href="/creditos"      onclick="closeMobileMenu()">Créditos</a>
+  <a href="/#features" class="mobile-menu-link">Funciones</a>
+  <a href="/#how-it-works" class="mobile-menu-link">¿Cómo funciona?</a>
+  <a href="/#pricing" class="mobile-menu-link">Precios</a>
+  <a href="/suscripciones" class="mobile-menu-link">Suscripciones</a>
+  <a href="/#about" class="mobile-menu-link">Nosotros</a>
+  <a href="/creditos" class="mobile-menu-link">Créditos</a>
   <a href="https://chat.ubotcr.com" class="btn btn-primary" rel="noopener noreferrer">Comenzar gratis</a>
 </nav>

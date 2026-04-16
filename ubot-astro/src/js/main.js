@@ -1,197 +1,258 @@
-// ── Component Loading ────────────────────────────────────
-// Esto ya no es necesario porque Astro inyecta el Nav y el Footer directamente desde el servidor.
-function loadComponents() {
-  return Promise.resolve(); // Para no romper nada que dependa de esto
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function getPreferredTheme() {
+  return localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  initNavScripts();     // Reemplazo la carga asíncrona de componentes
-  initFooterScripts();  // Ejecutando directo las inicializaciones de sus JS internos
-  initSwiper();
-  initGalleryModal();
-});
+function setThemeToggleState(theme) {
+  const themeToggle = document.getElementById('theme-toggle');
+  if (!themeToggle) return;
 
-// ── Gallery Modal (Click to zoom) ────────────────────────
+  const nextTheme = theme === 'dark' ? 'light' : 'dark';
+  themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+  themeToggle.setAttribute('aria-pressed', String(theme === 'dark'));
+  themeToggle.setAttribute('aria-label', `Activar tema ${nextTheme === 'dark' ? 'oscuro' : 'claro'}`);
+  themeToggle.setAttribute('title', `Cambiar a tema ${nextTheme === 'dark' ? 'oscuro' : 'claro'}`);
+}
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  setThemeToggleState(theme);
+}
+
+function initFooterScripts() {
+  const footerYear = document.getElementById('footer-year');
+  if (footerYear) {
+    footerYear.textContent = String(new Date().getFullYear());
+  }
+}
+
+function closeMobileMenu() {
+  const toggle = document.getElementById('nav-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (!mobileMenu || !toggle) return;
+
+  mobileMenu.classList.remove('open');
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-label', 'Abrir menú');
+}
+
+function initNavScripts() {
+  const toggle = document.getElementById('nav-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const themeToggle = document.getElementById('theme-toggle');
+
+  if (toggle && mobileMenu) {
+    toggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      toggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!toggle.contains(event.target) && !mobileMenu.contains(event.target)) {
+        closeMobileMenu();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeMobileMenu();
+      }
+    });
+
+    mobileMenu.querySelectorAll('.mobile-menu-link').forEach((link) => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+  }
+}
+
+function initScrollAnimations() {
+  const fadeElements = document.querySelectorAll('.fade-in');
+  if (!fadeElements.length) return;
+
+  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+    fadeElements.forEach((element) => element.classList.add('visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, observerInstance) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      observerInstance.unobserve(entry.target);
+    });
+  }, { threshold: 0.12 });
+
+  fadeElements.forEach((element) => observer.observe(element));
+}
+
+function initActiveNavHighlight() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  if (!sections.length || !navLinks.length || !('IntersectionObserver' in window)) return;
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      navLinks.forEach((link) => {
+        link.classList.remove('is-active');
+        link.removeAttribute('aria-current');
+      });
+
+      const escapedId = typeof CSS !== 'undefined' && typeof CSS.escape === 'function'
+        ? CSS.escape(entry.target.id)
+        : entry.target.id.replace(/[^a-zA-Z0-9-_]/g, '');
+      const active = document.querySelector(`.nav-links a[href="/#${escapedId}"], .nav-links a[href="#${escapedId}"]`);
+      if (!active) return;
+
+      active.classList.add('is-active');
+      active.setAttribute('aria-current', 'page');
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach((section) => sectionObserver.observe(section));
+}
+
+function initFAQ() {
+  const faqButtons = document.querySelectorAll('.faq-question');
+  if (!faqButtons.length) return;
+
+  faqButtons.forEach((button) => {
+    const item = button.closest('.faq-item');
+    const answer = item?.querySelector('.faq-answer');
+
+    button.setAttribute('aria-expanded', 'false');
+    if (answer) {
+      answer.setAttribute('hidden', '');
+    }
+
+    button.addEventListener('click', () => {
+      const currentItem = button.closest('.faq-item');
+      if (!currentItem) return;
+
+      const isAlreadyOpen = currentItem.classList.contains('active');
+
+      document.querySelectorAll('.faq-item').forEach((faqItem) => {
+        const faqButton = faqItem.querySelector('.faq-question');
+        const faqAnswer = faqItem.querySelector('.faq-answer');
+        faqItem.classList.remove('active');
+        faqButton?.setAttribute('aria-expanded', 'false');
+        faqAnswer?.setAttribute('hidden', '');
+      });
+
+      if (isAlreadyOpen) return;
+
+      currentItem.classList.add('active');
+      button.setAttribute('aria-expanded', 'true');
+      answer?.removeAttribute('hidden');
+    });
+  });
+}
+
 function initGalleryModal() {
-  // Create modal elements
+  const slider = document.querySelector('.gallery-slider');
+  if (!slider) return;
+
   const modal = document.createElement('div');
   modal.className = 'image-modal';
   modal.innerHTML = `
-    <span class="close-modal">&times;</span>
-    <img class="image-modal-content">
+    <button class="close-modal" aria-label="Cerrar imagen ampliada" type="button">&times;</button>
+    <img class="image-modal-content" alt="Vista ampliada de captura de Ubot">
   `;
   document.body.appendChild(modal);
 
-  const modalImg = modal.querySelector('.image-modal-content');
-  const closeBtn = modal.querySelector('.close-modal');
+  const modalImage = modal.querySelector('.image-modal-content');
+  const closeButton = modal.querySelector('.close-modal');
+  const closeDelay = prefersReducedMotion ? 0 : 300;
 
-  // Listen for clicks on the active slide's image
-  document.addEventListener('click', function(e) {
-    if (e.target.tagName === 'IMG' && e.target.closest('.swiper-slide-active')) {
-      modalImg.src = e.target.src;
-      modal.style.display = 'flex';
-      // Use small timeout to allow display:flex to apply before adding class for transition
-      setTimeout(() => modal.classList.add('show'), 10);
+  const closeModal = () => {
+    modal.classList.remove('show');
+    document.body.classList.remove('modal-open');
+    window.setTimeout(() => {
+      modal.style.display = 'none';
+    }, closeDelay);
+  };
+
+  slider.addEventListener('click', (event) => {
+    const image = event.target.closest('.swiper-slide-active img');
+    if (!image || !modalImage) return;
+
+    modalImage.src = image.src;
+    modal.style.display = 'flex';
+    document.body.classList.add('modal-open');
+    window.setTimeout(() => modal.classList.add('show'), 10);
+  });
+
+  closeButton?.addEventListener('click', closeModal);
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal || event.target.classList.contains('close-modal')) {
+      closeModal();
     }
   });
 
-  // Function to close modal
-  function closeModal() {
-    modal.classList.remove('show');
-    setTimeout(() => modal.style.display = 'none', 300); // 300ms matches CSS transition
-  }
-
-  closeBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', function(e) {
-    // Close if clicked outside the image
-    if (e.target !== modalImg) {
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal.classList.contains('show')) {
       closeModal();
     }
   });
 }
 
-// ── Swiper Initialization ────────────────────────────────
 function initSwiper() {
-  if (typeof Swiper !== 'undefined' && document.querySelector('.gallery-slider')) {
-    new Swiper('.gallery-slider', {
-      effect: 'coverflow',
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: 'auto',
-      loop: true,
-      slideToClickedSlide: true, // Permite hacer click en la foto anterior/siguiente para cambiar
-      observer: true,
-      observeParents: true,
-      watchSlidesProgress: true, // Añadido para corregir problemas de visibilidad de las siguientes fotos
-      coverflowEffect: {
-        rotate: 30,
-        stretch: 0,
-        depth: 150,
-        modifier: 1,
-        slideShadows: true,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-      }
-    });
-  }
-}
+  if (typeof Swiper === 'undefined' || !document.querySelector('.gallery-slider')) return;
 
-// ── Footer year ──────────────────────────────────────────
-function initFooterScripts() {
-  const footerYear = document.getElementById('footer-year');
-  if (footerYear) {
-    footerYear.textContent = new Date().getFullYear();
-  }
-}
-
-// ── Mobile menu toggle ──────────────────────────────────
-function closeMobileMenu() {
-  const toggle = document.getElementById('nav-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  if (mobileMenu && toggle) {
-    mobileMenu.classList.remove('open');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Abrir menú');
-  }
-}
-
-// Ensure the function is globally available for inline onclicks
-window.closeMobileMenu = closeMobileMenu;
-
-function initNavScripts() {
-  const toggle = document.getElementById('nav-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-
-  if (toggle && mobileMenu) {
-    toggle.addEventListener('click', function () {
-      var isOpen = mobileMenu.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      toggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
-    });
-
-    // Close mobile menu on outside click
-    document.addEventListener('click', function (e) {
-      if (!toggle.contains(e.target) && !mobileMenu.contains(e.target)) {
-        closeMobileMenu();
-      }
-    });
-  }
-
-  // ── Theme Toggle ──
-  const themeToggle = document.getElementById('theme-toggle');
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-      let theme = document.documentElement.getAttribute('data-theme');
-      let targetTheme = theme === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', targetTheme);
-      localStorage.setItem('theme', targetTheme);
-    });
-  }
-}
-
-// Initialize theme early to prevent flashing
-const initTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-document.documentElement.setAttribute('data-theme', initTheme);
-
-// ── Scroll-triggered fade-in ─────────────────────────────
-const observer = new IntersectionObserver(function (entries) {
-  entries.forEach(function (entry) {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
+  new Swiper('.gallery-slider', {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    loop: true,
+    slideToClickedSlide: true,
+    observer: true,
+    observeParents: true,
+    watchSlidesProgress: true,
+    coverflowEffect: {
+      rotate: 30,
+      stretch: 0,
+      depth: 150,
+      modifier: 1,
+      slideShadows: true,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    autoplay: prefersReducedMotion
+      ? false
+      : {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
   });
-}, { threshold: 0.12 });
-
-document.querySelectorAll('.fade-in').forEach(function (el) {
-  observer.observe(el);
-});
-
-// ── Smooth active nav highlight ──────────────────────────
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-
-if (navLinks.length > 0) {
-  const sectionObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        navLinks.forEach(function (link) {
-          link.style.color = '';
-        });
-        var active = document.querySelector('.nav-links a[href="#' + entry.target.id + '"]');
-        if (active) { active.style.color = 'var(--primary)'; }
-      }
-    });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-
-  sections.forEach(function (s) { sectionObserver.observe(s); });
 }
 
-// ── FAQ accordion toggle ─────────────────────────────────
-document.querySelectorAll('.faq-question').forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    var item = btn.closest('.faq-item');
-    var isActive = item.classList.contains('active');
-
-    // Close all other items
-    document.querySelectorAll('.faq-item.active').forEach(function (activeItem) {
-      activeItem.classList.remove('active');
-    });
-
-    // Toggle current item
-    if (!isActive) {
-      item.classList.add('active');
-    }
-  });
+document.addEventListener('DOMContentLoaded', () => {
+  const initialTheme = document.documentElement.getAttribute('data-theme') || getPreferredTheme();
+  setThemeToggleState(initialTheme);
+  initNavScripts();
+  initFooterScripts();
+  initSwiper();
+  initGalleryModal();
+  initScrollAnimations();
+  initActiveNavHighlight();
+  initFAQ();
 });
-
