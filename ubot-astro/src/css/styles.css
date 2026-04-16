@@ -256,11 +256,9 @@ img { max-width: 100%; display: block; }
 
 .nav-cta { margin-left: 8px; }
 .theme-toggle {
-  width: 56px;
   height: 36px;
   padding: 0;
   margin-right: 12px;
-  min-width: 56px;
   line-height: 1;
   font-size: 1rem;
   flex: 0 0 56px;

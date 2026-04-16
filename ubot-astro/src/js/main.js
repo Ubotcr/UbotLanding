@@ -4,10 +4,7 @@ function getPreferredTheme() {
   return localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 }
 
-function applyTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-  localStorage.setItem('theme', theme);
-
+function setThemeToggleState(theme) {
   const themeToggle = document.getElementById('theme-toggle');
   if (!themeToggle) return;
 
@@ -16,6 +13,12 @@ function applyTheme(theme) {
   themeToggle.setAttribute('aria-pressed', String(theme === 'dark'));
   themeToggle.setAttribute('aria-label', `Activar tema ${nextTheme === 'dark' ? 'oscuro' : 'claro'}`);
   themeToggle.setAttribute('title', `Cambiar a tema ${nextTheme === 'dark' ? 'oscuro' : 'claro'}`);
+}
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  setThemeToggleState(theme);
 }
 
 function initFooterScripts() {
@@ -243,7 +246,7 @@ function initSwiper() {
 }
 
 const initialTheme = document.documentElement.getAttribute('data-theme') || getPreferredTheme();
-applyTheme(initialTheme);
+setThemeToggleState(initialTheme);
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavScripts();
