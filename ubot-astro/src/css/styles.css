@@ -262,7 +262,6 @@ img { max-width: 100%; display: block; }
   line-height: 1;
   font-size: 1rem;
   flex: 0 0 56px;
-  overflow: hidden;
   justify-content: center;
 }
 
