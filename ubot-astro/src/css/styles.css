@@ -5,10 +5,15 @@
   --primary:        #2563eb;
   --primary-dark:   #1d4ed8;
   --primary-glow:   #e0e7ff;
+  --secondary:      #334155;
   --gold:           #d97706;
   --gold-light:     #f59e0b;
   --success:        #16a34a;
+  --warning:        #ca8a04;
+  --danger:         #dc2626;
+  --info:           #0ea5e9;
   --bg:             #ffffff;
+  --bg-alt:         #f8fafc;
   --bg-card:        #f8fafc;
   --bg-card-hover:  #f1f5f9;
   --surface:        #ffffff;
@@ -26,10 +31,15 @@
   --primary:        #3b82f6;
   --primary-dark:   #2563eb;
   --primary-glow:   #1e3a8a;
+  --secondary:      #94a3b8;
   --gold:           #d97706;
   --gold-light:     #f59e0b;
   --success:        #16a34a;
+  --warning:        #facc15;
+  --danger:         #f87171;
+  --info:           #38bdf8;
   --bg:             #0f1117;
+  --bg-alt:         #141925;
   --bg-card:        #1a1d27;
   --bg-card-hover:  #252836;
   --surface:        #1f2335;
@@ -52,6 +62,12 @@ body {
 
 a { color: var(--primary); text-decoration: none; }
 a:hover { text-decoration: underline; }
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
 
 img { max-width: 100%; display: block; }
 
@@ -83,11 +99,21 @@ img { max-width: 100%; display: block; }
   padding: 30px;
   aspect-ratio: 1/1;
 }
+.logo-shadow-ucr { filter: drop-shadow(0 0 10px #8885); }
+.logo-shadow-una { filter: drop-shadow(0 0 10px #f225); }
+.logo-shadow-tec { filter: drop-shadow(0 0 10px #33f6); }
 
 .text-center { text-align: center; }
 .text-muted   { color: var(--text-muted); }
 .text-gold    { color: var(--gold); }
 .text-primary { color: var(--primary); }
+.text-secondary { color: var(--secondary); }
+.text-success { color: var(--success); }
+.text-warning { color: var(--warning); }
+.text-danger { color: var(--danger); }
+.text-info { color: var(--info); }
+.text-sm { font-size: 0.9rem; }
+.mb-2 { margin-bottom: 0.5rem; }
 
 .badge {
   display: inline-block;
@@ -216,8 +242,18 @@ img { max-width: 100%; display: block; }
   background: var(--bg-card-hover);
   text-decoration: none;
 }
+.nav-links a.is-active {
+  color: var(--primary);
+  background: var(--primary-glow);
+}
 
 .nav-cta { margin-left: 8px; }
+.theme-toggle {
+  padding: 6px 12px;
+  margin-right: 12px;
+  min-width: 56px;
+  justify-content: center;
+}
 
 /* Hamburger */
 #nav-toggle {
@@ -303,6 +339,10 @@ img { max-width: 100%; display: block; }
   flex-direction: column;
   align-items: center;
   gap: 4px;
+  transition: transform var(--transition);
+}
+.hero-stat-item:hover {
+  transform: translateY(-2px);
 }
 
 .hero-stat-num {
@@ -476,6 +516,12 @@ section {
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   border: 1px solid var(--border);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.gallery-slider .swiper-slide:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
 }
 
 .gallery-slider .swiper-slide img {
@@ -512,6 +558,9 @@ section {
   opacity: 0;
   transition: opacity 0.3s ease;
   backdrop-filter: blur(5px);
+}
+body.modal-open {
+  overflow: hidden;
 }
 
 .image-modal.show {
@@ -1234,6 +1283,9 @@ footer {
 .faq-question:hover {
   color: var(--primary);
 }
+.faq-question:focus-visible {
+  color: var(--primary);
+}
 
 .faq-icon {
   flex-shrink: 0;
@@ -1310,6 +1362,19 @@ footer {
   margin: 0 auto 18px;
   font-size: 1.6rem;
 }
+.credit-icon-avatar {
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 800;
+}
+.credit-icon-plain {
+  background: transparent;
+  margin-bottom: 12px;
+}
+.credit-icon-primary { background: var(--primary); }
+.credit-icon-secondary { background: var(--secondary); }
+.credit-icon-success { background: var(--success); }
+.credit-icon-warning { background: var(--warning); }
 
 .credit-card h3 {
   font-size: 1.1rem;
@@ -1348,6 +1413,15 @@ footer {
   margin-bottom: 16px;
   line-height: 1.7;
 }
+.ack-list {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
 
 /* ─── New page responsive ────────────────────────────────── */
 @media (max-width: 640px) {
@@ -1370,7 +1444,19 @@ footer {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 
+  .fade-in {
+    opacity: 1;
+    transform: none;
+  }
+}
 
 
 
