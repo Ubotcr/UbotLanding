@@ -245,10 +245,9 @@ function initSwiper() {
   });
 }
 
-const initialTheme = document.documentElement.getAttribute('data-theme') || getPreferredTheme();
-setThemeToggleState(initialTheme);
-
 document.addEventListener('DOMContentLoaded', () => {
+  const initialTheme = document.documentElement.getAttribute('data-theme') || getPreferredTheme();
+  setThemeToggleState(initialTheme);
   initNavScripts();
   initFooterScripts();
   initSwiper();
