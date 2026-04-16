@@ -242,11 +242,10 @@ function initSwiper() {
   });
 }
 
-const initialTheme = getPreferredTheme();
-document.documentElement.setAttribute('data-theme', initialTheme);
+const initialTheme = document.documentElement.getAttribute('data-theme') || getPreferredTheme();
+applyTheme(initialTheme);
 
 document.addEventListener('DOMContentLoaded', () => {
-  applyTheme(initialTheme);
   initNavScripts();
   initFooterScripts();
   initSwiper();
