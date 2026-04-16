@@ -1445,18 +1445,26 @@ footer {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+  html { scroll-behavior: auto; }
 
   .fade-in {
     opacity: 1;
     transform: none;
+    transition: none;
+  }
+
+  .btn,
+  .feature-card,
+  .team-card,
+  .credit-card,
+  .pricing-card,
+  .hero-stat-item,
+  .gallery-slider .swiper-slide,
+  .faq-answer,
+  .faq-icon,
+  .image-modal,
+  .image-modal-content {
+    transition: none;
   }
 }
-
-
 

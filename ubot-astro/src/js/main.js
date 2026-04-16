@@ -13,6 +13,7 @@ function applyTheme(theme) {
 
   const nextTheme = theme === 'dark' ? 'light' : 'dark';
   themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+  themeToggle.setAttribute('aria-pressed', String(theme === 'dark'));
   themeToggle.setAttribute('aria-label', `Activar tema ${nextTheme === 'dark' ? 'oscuro' : 'claro'}`);
   themeToggle.setAttribute('title', `Cambiar a tema ${nextTheme === 'dark' ? 'oscuro' : 'claro'}`);
 }
@@ -76,16 +77,16 @@ function initScrollAnimations() {
   const fadeElements = document.querySelectorAll('.fade-in');
   if (!fadeElements.length) return;
 
-  if (prefersReducedMotion || typeof IntersectionObserver === 'undefined') {
+  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
     fadeElements.forEach((element) => element.classList.add('visible'));
     return;
   }
 
-  const observer = new IntersectionObserver((entries, currentObserver) => {
+  const observer = new IntersectionObserver((entries, observerInstance) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
       entry.target.classList.add('visible');
-      currentObserver.unobserve(entry.target);
+      observerInstance.unobserve(entry.target);
     });
   }, { threshold: 0.12 });
 
@@ -95,7 +96,7 @@ function initScrollAnimations() {
 function initActiveNavHighlight() {
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
-  if (!sections.length || !navLinks.length || typeof IntersectionObserver === 'undefined') return;
+  if (!sections.length || !navLinks.length || !('IntersectionObserver' in window)) return;
 
   const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -106,7 +107,10 @@ function initActiveNavHighlight() {
         link.removeAttribute('aria-current');
       });
 
-      const active = document.querySelector(`.nav-links a[href="/#${entry.target.id}"], .nav-links a[href="#${entry.target.id}"]`);
+      const escapedId = typeof CSS !== 'undefined' && typeof CSS.escape === 'function'
+        ? CSS.escape(entry.target.id)
+        : entry.target.id.replace(/[^a-zA-Z0-9-_]/g, '');
+      const active = document.querySelector(`.nav-links a[href="/#${escapedId}"], .nav-links a[href="#${escapedId}"]`);
       if (!active) return;
 
       active.classList.add('is-active');
@@ -167,7 +171,7 @@ function initGalleryModal() {
 
   const modalImage = modal.querySelector('.image-modal-content');
   const closeButton = modal.querySelector('.close-modal');
-  const closeDelay = prefersReducedMotion ? 0 : 250;
+  const closeDelay = prefersReducedMotion ? 0 : 300;
 
   const closeModal = () => {
     modal.classList.remove('show');
@@ -238,9 +242,11 @@ function initSwiper() {
   });
 }
 
-applyTheme(getPreferredTheme());
+const initialTheme = getPreferredTheme();
+document.documentElement.setAttribute('data-theme', initialTheme);
 
 document.addEventListener('DOMContentLoaded', () => {
+  applyTheme(initialTheme);
   initNavScripts();
   initFooterScripts();
   initSwiper();
